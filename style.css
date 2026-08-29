@@ -1,6 +1,6 @@
 /* ============================================================
-   PORTFOLIO — Responsive Stylesheet
-   Theme  : dark glass + neon cyan
+   PORTFOLIO — Responsive Stylesheet (rombak ulang)
+   Theme  : dark glass + neon cyan  (tema lama dipertahankan)
    ============================================================ */
 
 :root {
@@ -23,16 +23,14 @@
 
 * { box-sizing: border-box; }
 
-html, body {
-    height: 100%;
-    margin: 0;
+html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
     margin: 0;
     min-height: 100vh;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
     color: var(--text);
     background:
         radial-gradient(circle at 15% 10%, #1d4a6e 0%, transparent 45%),
@@ -42,25 +40,34 @@ body {
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
-/* ---------- Content offset for the fixed sidebar ---------- */
+/* ---------- Offset konten untuk sidebar fixed ---------- */
 #app, .content {
     margin-left: var(--sidebar-w);
     width: calc(100% - var(--sidebar-w));
+    min-width: 0;               /* cegah grid/konten meluap */
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
+.wrapper { flex: 1 0 auto; width: 100%; min-width: 0; }
+
 /* ============================================================
-   SIDEBAR (kanan-kiri nav)
+   SIDEBAR (navigasi samping)
    ============================================================ */
 nav {
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
+    height: 100dvh;
     width: var(--sidebar-w);
     background: rgba(10, 16, 28, 0.92);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-right: 1px solid var(--card-border);
     padding-top: 20px;
     overflow-y: auto;
@@ -111,13 +118,14 @@ nav .profile {
     font-weight: 600;
     border-radius: 12px;
     border: 1px solid transparent;
-    transition: all 0.25s ease;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 
 .nav-links a .ico {
     font-size: 18px;
     width: 22px;
     text-align: center;
+    flex: none;
 }
 
 .nav-links a:hover {
@@ -132,14 +140,15 @@ nav .profile {
     color: #04121f;
     box-shadow: 0 6px 18px var(--cyan-glow);
 }
+.nav-links a.active:hover { transform: none; }
 
-/* ---------- Hamburger (mobile only) ---------- */
+/* ---------- Tombol hamburger (hanya tampil di layar kecil) ---------- */
 #menuToggle {
     display: none;
     position: fixed;
     top: 14px;
     left: 14px;
-    z-index: 200;
+    z-index: 210;
     background: linear-gradient(135deg, var(--cyan-soft), #2aa8e0);
     color: #04121f;
     border: none;
@@ -147,32 +156,44 @@ nav .profile {
     width: 46px;
     height: 46px;
     font-size: 20px;
+    line-height: 1;
     cursor: pointer;
     box-shadow: 0 4px 14px var(--cyan-glow);
+    padding: 0;
 }
+
+/* Backdrop saat drawer terbuka */
+.nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 150;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.nav-backdrop.show { opacity: 1; visibility: visible; }
 
 /* ============================================================
    HERO / HEADER
    ============================================================ */
-.wrapper { flex: 1; width: 100%; }
-
 .header-title {
-    padding: 40px 28px;
+    padding: 34px 28px 18px;
     text-align: center;
 }
 
 .header-title h1 {
-    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-size: clamp(1.6rem, 5vw, 3rem);
     font-weight: 800;
     letter-spacing: 2px;
     margin: 0 0 10px 0;
+    text-shadow: none;
     background: linear-gradient(90deg, var(--cyan-soft), #8ff0ff, var(--cyan-soft));
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shine 4s linear infinite;
-    text-shadow: none;
 }
 
 .header-title h1:hover { animation-play-state: paused; }
@@ -194,7 +215,7 @@ nav .profile {
     text-decoration: none;
     border: 1px solid var(--cyan-soft);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header2 a:hover, .p1-biodata a:hover {
@@ -203,8 +224,6 @@ nav .profile {
     transform: translateY(-3px);
     box-shadow: 0 8px 22px var(--cyan-glow);
 }
-
-.p1-biodata { transition: transform 0.3s ease, color 0.3s ease; }
 
 /* ============================================================
    GENERIC SECTION / CARDS
@@ -218,7 +237,7 @@ nav .profile {
 
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 22px;
 }
 
@@ -228,9 +247,11 @@ nav .profile {
     border-radius: var(--radius);
     padding: 26px 22px;
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     position: relative;
     overflow: hidden;
+    min-width: 0;
 }
 
 .card::before {
@@ -276,7 +297,12 @@ nav .profile {
    ============================================================ */
 .skill-list { display: flex; flex-direction: column; gap: 22px; }
 
-.skill-row { display: grid; grid-template-columns: 130px 1fr 64px; gap: 14px; align-items: center; }
+.skill-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 64px;
+    gap: 14px;
+    align-items: center;
+}
 
 .skill-name { font-weight: 700; font-size: 0.95rem; color: #fff; }
 .skill-name small { display: block; color: var(--muted); font-weight: 400; font-size: 0.72rem; }
@@ -290,19 +316,21 @@ nav .profile {
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Lebar diambil langsung dari --w (inline di HTML), tanpa JS */
 .skill-fill {
+    width: var(--w, 0%);
     height: 100%;
-    width: 0;
     border-radius: 999px;
     background: linear-gradient(90deg, var(--cyan-soft), #7ae6ff);
     box-shadow: 0 0 14px var(--cyan-glow);
+    transform-origin: left;
     animation: fillBar 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .skill-pct { text-align: right; font-weight: 800; font-size: 0.95rem; color: var(--cyan); }
 
 @keyframes fillBar {
-    from { width: 0; }
+    from { transform: scaleX(0); }
 }
 
 /* Diagram batang (vertical bar chart) */
@@ -312,7 +340,7 @@ nav .profile {
     justify-content: space-around;
     gap: 8px;
     height: 260px;
-    padding: 16px 10px 0;
+    padding: 16px 12px 0;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius);
@@ -328,17 +356,16 @@ nav .profile {
     justify-content: flex-end;
     height: 100%;
     position: relative;
+    min-width: 0;
 }
 
 .chart .bar {
-    width: 70%;
-    max-width: 46px;
+    width: min(70%, 46px);
     border-radius: 10px 10px 4px 4px;
     background: linear-gradient(180deg, #7ae6ff, var(--cyan-soft));
     box-shadow: 0 0 18px var(--cyan-glow);
-    animation: growBar 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     transform-origin: bottom;
-    height: 0;
+    animation: growBar 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .chart .bar-wrap:nth-child(odd) .bar {
@@ -346,7 +373,7 @@ nav .profile {
 }
 
 @keyframes growBar {
-    from { height: 0; }
+    from { transform: scaleY(0.02); }
 }
 
 .chart .bar-label {
@@ -360,7 +387,7 @@ nav .profile {
 
 .chart .bar-value {
     position: absolute;
-    top: -24px;
+    top: -22px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 0.8rem;
@@ -379,20 +406,18 @@ nav .profile {
    ============================================================ */
 .table {
     margin: 0 auto;
-    padding: 20px;
+    padding: 8px 16px 20px;
     width: 100%;
     display: flex;
     justify-content: center;
-    min-height: 70vh;
     align-items: center;
+    min-height: 60vh;
 }
 
 #tabel-identitas {
     width: 100%;
     max-width: 900px;
-    height: auto;
     text-align: center;
-    margin: auto;
     border-radius: 14px;
     overflow: hidden;
     border-collapse: separate;
@@ -403,14 +428,15 @@ nav .profile {
 
 #tabel-identitas td {
     padding: 14px 12px;
-    transition: background-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     vertical-align: middle;
 }
 
+#tabel-identitas tr:last-child td { border-bottom: none; }
+
 #tabel-identitas td.no-hover:hover {
     background-color: transparent !important;
-    transform: none;
     cursor: default;
 }
 
@@ -428,6 +454,8 @@ nav .profile {
     object-fit: cover;
     border: 3px solid var(--cyan);
     box-shadow: 0 0 18px var(--cyan-glow);
+    display: block;
+    margin: 0 auto;
 }
 
 /* ============================================================
@@ -435,10 +463,7 @@ nav .profile {
    ============================================================ */
 .popup-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
@@ -446,7 +471,8 @@ nav .profile {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 999;
+    z-index: 1000;
+    padding: 20px;
 }
 
 .popup-overlay.active { opacity: 1; visibility: visible; }
@@ -457,6 +483,8 @@ nav .profile {
     padding: 30px 34px;
     border-radius: 14px;
     width: min(560px, 90vw);
+    max-height: 80vh;
+    overflow-y: auto;
     position: relative;
     border: 2px solid var(--cyan);
     transform: scale(0.7) translateY(-20px);
@@ -485,7 +513,7 @@ nav .profile {
    ============================================================ */
 .footer {
     text-align: center;
-    padding: 20px 16px;
+    padding: 16px;
     margin-top: auto;
     color: #cfe3f5;
     background: rgba(10, 16, 28, 0.85);
@@ -499,16 +527,16 @@ nav .profile {
    RESPONSIVE BREAKPOINTS
    ============================================================ */
 @media (max-width: 900px) {
-    #tabel-identitas td { font-size: 0.9rem; padding: 10px 8px; }
+    #tabel-identitas td { font-size: 0.9rem; padding: 12px 10px; }
     .skill-row { grid-template-columns: 110px 1fr 54px; }
 }
 
 @media (max-width: 768px) {
-    :root { --sidebar-w: 240px; }
-
+    /* Sidebar berubah jadi drawer */
     #menuToggle { display: block; }
 
     nav {
+        width: min(280px, 84vw);
         transform: translateX(-110%);
         box-shadow: 6px 0 30px rgba(0, 0, 0, 0.5);
     }
@@ -517,28 +545,44 @@ nav .profile {
     #app, .content { margin-left: 0; width: 100%; }
 
     .wrapper, .section { padding-left: 16px; padding-right: 16px; }
-    .header-title { padding-top: 84px; }
+    .header-title { padding: 78px 6px 18px; }
 
-    .skill-row { grid-template-columns: 1fr; gap: 6px; text-align: left; }
+    .skill-row { grid-template-columns: 1fr; gap: 6px; }
     .skill-pct { text-align: left; }
+    .skill-track { height: 18px; }
     .chart { height: 220px; }
+
+    .table { min-height: 0; justify-content: center; }
 }
 
-@media (max-width: 480px) {
-    .profile-pic { width: 70px; height: 70px; }
+@media (max-width: 560px) {
+    .header-title { padding-top: 72px; }
+    .header-title p { font-size: 0.95rem; }
     .card { padding: 20px 16px; }
+    .card-grid { gap: 16px; }
+
+    .profile-pic { width: 70px; height: 70px; }
+    nav .profile { padding: 14px 10px; }
+
+    .pfp-table { width: 88px; height: 88px; }
+    #tabel-identitas td { padding: 12px 8px; font-size: 0.85rem; }
+
+    .chart { height: 190px; }
     .chart .bar-label { font-size: 0.62rem; }
-    .popup-box { padding: 24px 18px; }
+    .popup-box { padding: 24px 20px; }
 }
 
-/* ---------- Screen reader / nav overlay backdrop ---------- */
-.nav-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 90;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
+@media (max-width: 380px) {
+    #tabel-identitas td { font-size: 0.8rem; padding: 11px 6px; }
+    .pfp-table { width: 70px; height: 70px; }
 }
-.nav-backdrop.show { opacity: 1; visibility: visible; }
+
+/* ---------- Aksesibilitas: kurangi animasi kalau diizinkan ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
