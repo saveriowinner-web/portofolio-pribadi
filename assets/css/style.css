@@ -167,7 +167,7 @@ nav .profile {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
-    z-index: 150;
+    z-index: 90;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -224,6 +224,42 @@ nav .profile {
     transform: translateY(-3px);
     box-shadow: 0 8px 22px var(--cyan-glow);
 }
+
+/* ============================================================
+   ANIMASI KEMUNCULAN (fade in + geser dari bawah, ease-out)
+   ============================================================ */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.header-title,
+.card,
+.table,
+.skill-list,
+.chart,
+.contact-form,
+.live-preview {
+    animation: fadeUp 0.7s ease-out backwards;
+}
+
+/* Konten menu (kartu) muncul berurutan */
+.card:nth-child(1)   { animation-delay: 0.04s; }
+.card:nth-child(2)   { animation-delay: 0.09s; }
+.card:nth-child(3)   { animation-delay: 0.14s; }
+.card:nth-child(4)   { animation-delay: 0.19s; }
+.card:nth-child(5)   { animation-delay: 0.24s; }
+.card:nth-child(6)   { animation-delay: 0.29s; }
+.card:nth-child(n+7) { animation-delay: 0.34s; }
+
+/* Form & preview muncul bertahap */
+.contact-form { animation-delay: 0.08s; }
+.live-preview { animation-delay: 0.2s; }
+
+/* Halaman lain: konten utama muncul sedikit lebih lambat */
+.table,
+.skill-list,
+.chart { animation-delay: 0.12s; }
 
 /* ============================================================
    GENERIC SECTION / CARDS
@@ -790,9 +826,17 @@ nav .profile {
     nav {
         width: min(280px, 84vw);
         transform: translateX(-110%);
+        visibility: hidden;
+        pointer-events: none;
         box-shadow: 6px 0 30px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease, visibility 0s linear 0.3s;
     }
-    nav.open { transform: translateX(0); }
+    nav.open {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+        transition: transform 0.3s ease, visibility 0s;
+    }
 
     #app, .content { margin-left: 0; width: 100%; }
 

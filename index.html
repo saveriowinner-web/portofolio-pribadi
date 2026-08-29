@@ -85,14 +85,20 @@
     const toggle = document.getElementById('menuToggle');
     const sidebar = document.querySelector('nav');
     const backdrop = document.getElementById('backdrop');
+    const closeMenu = () => {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('show');
+        sidebar.inert = true;
+        document.body.style.overflow = '';
+    };
     toggle.addEventListener('click', () => {
         const open = sidebar.classList.toggle('open');
         backdrop.classList.toggle('show', open);
+        sidebar.inert = !open;
+        document.body.style.overflow = open ? 'hidden' : '';
     });
-    backdrop.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        backdrop.classList.remove('show');
-    });
+    backdrop.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('mousemove', e => {
