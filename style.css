@@ -1,0 +1,319 @@
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 200px;
+    background-color: #1e1e1e;
+    padding-top: 20px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-links a {
+    display: block;
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-links a:hover {
+        background-color: #34495e;
+    transform: scale(1.05) translateX(5px);
+}
+
+.profile {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #34495e;
+    margin-bottom: 10px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4fd3ff;
+}
+
+.profile-name {
+    color: #ecf0f1;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    margin: 0;
+    margin-left: 200px;
+    background: linear-gradient(135deg, #b3ffee, #7b9fcc);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    background-attachment: fixed;
+    display: flex;              
+    flex-direction: column;  
+}
+
+.table{
+    align-items: center;
+    margin: 0 auto;
+    display: flex;
+    margin-left: 200px;
+    justify-content: center; 
+    align-items: center;       
+    min-height: 100vh;         
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.footer{
+    text-align: center;
+}
+
+tr {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header1{
+    font-family: 'segoe UI' sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f2b46; 
+    letter-spacing: 2px;
+    margin: 0 0 8px 0;
+    text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.header1{
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.header1:hover{
+    font-family: 'segoe UI' sans-serif;
+     transform: scale(1.09);
+     transition: transform 0.3s ease, color 0.3s ease;
+     color: #6f6f6f;
+}
+
+.header2 a:hover {
+    background-color: #31d5f6;
+    color: #222222;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(49, 213, 246, 0.4);
+}
+
+.header2 a {
+    display: inline-block;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #31d5f6;
+    background-color: #3b3b3b; 
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid #31d5f6;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.footer{
+    background-color: #515151;
+    color: white;
+}
+.wrapper {
+    flex: 1;
+    padding-top: 100px;
+}
+
+td {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+td:hover {
+    background-color: #2f2f2f !important;         
+    color: #ecf0f1;  
+    cursor: pointer;                     
+    font-weight: 700;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); 
+    position: relative;
+    z-index: 1;
+}
+
+.no-hover:hover {
+    transform: none;
+    background-color: transparent;
+}
+.clickable {
+    cursor: pointer;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup-overlay.active {
+    display: flex;
+}
+
+.popup-box {
+    background-color: #2b2b2b;
+    color: #ecf0f1;
+    padding: 25px 35px;
+    border-radius: 10px;
+    width: 550px;
+    max-width: 75%;
+    position: relative;
+    border: 2px solid #4fd3ff;
+    animation: popupIn 0.25s ease;
+}
+
+@keyframes popupIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.popup-box h3 {
+    color: #4fd3ff;
+    margin-top: 0;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ecf0f1;
+}
+
+.popup-close:hover {
+    color: #4fd3ff;
+}
+
+        /* CSS Animasi Popup Tambahan */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .popup-box {
+            background: #212121;
+            padding: 20px;
+            border-radius: 8px;
+            transform: scale(0.7) translateY(-20px);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-overlay.active .popup-box {
+            transform: scale(1) translateY(0);
+        }
+html{
+    scroll-behavior: smooth;
+}
+
+.p1-biodata{
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.p1-biodata:hover{
+     transform: scale(1.04);
+     transition: transform 0.3s ease, color 0.3s ease;
+     color: #6f6f6f;
+}
+
+.pfp-table{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4fd3ff;
+}
+
+.header-title {
+    width: 900px;
+    padding-top: 87px;
+    padding-left: 100px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.header-title h1 {
+    font-family: 'segoe UI' sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f2b46; 
+    letter-spacing: 2px;
+    margin: 0 0 8px 0;
+    text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.p1-biodata a {
+    display: inline-block;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #31d5f6;
+    background-color: #3b3b3b; 
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid #31d5f6;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.header-title .p1-biodata a:hover {
+    background-color: #31d5f6;
+    color: #222222;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(49, 213, 246, 0.4);
+}
+
+
+#tabel-identitas td {
+    transition: ease-in-out; 
+}
+#tabel-identitas td.clickable:hover {
+    background-color: #29c2e0 !important; 
+    color: #1a1a1a !important;           
+    cursor: pointer;                     
+    font-weight: 700;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); 
+}
