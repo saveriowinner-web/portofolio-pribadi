@@ -1,108 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata - Winner</title>
+    <title>Beranda - Winner</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<button id="menuToggle" aria-label="Buka menu">&#9776;</button>
+<div id="backdrop" class="nav-backdrop"></div>
+
 <nav>
     <div class="profile">
         <img src="miwapfp.jpg" alt="miwapfp" class="profile-pic">
+        <div class="profile-name">Winner Hana<br><small>PPLG 1</small></div>
     </div>
     <div class="nav-links">
-        <a href="index.html">Beranda</a>
-        <a href="biodata.html" class="active">Identitas</a>
-        <a href="Skill.html">Kemampuan</a>
-        <a href="project.html">Project</a>
-        <a href="Certivic.html">Sertifikat</a>
+        <a href="index.html" class="active"><span class="ico">&#127968;</span> Beranda</a>
+        <a href="biodata.html"><span class="ico">&#128100;</span> Identitas</a>
+        <a href="kemampuan.html"><span class="ico">&#128200;</span> Kemampuan</a>
+        <a href="project.html"><span class="ico">&#128736;</span> Project</a>
+        <a href="sertifikat.html"><span class="ico">&#127891;</span> Sertifikat</a>
     </div>
 </nav>
 
-<div class="header-title">
-    <h1>IDENTITY CARD</h1>
-    <p class="p1-biodata">
-        <a href="#tabel-identitas">
-            Klik di sini untuk interaksi / scroll otomatis
-        </a>
-    </p>
-</div>
+<div class="content">
+    <div class="wrapper">
+        <div class="header-title">
+            <h1>Selamat Datang Di Web Saya</h1>
+            <p class="header2">
+                <a href="biodata.html">Hai!, Nama Saya Winner!, Kenalan Yukz! &#128075;</a>
+            </p>
+        </div>
 
-<div class="table">
-    <table id="tabel-identitas" style="text-align: center; margin: auto; border-radius: 14px; width: 900px; height: 400px; overflow: hidden; border-collapse: separate; border-spacing: 0;">
-        <tr>
-            <td style="background-color: rgb(49, 213, 246);" colspan="3">IDENTITAS</td>
-        </tr>
-        <tr style="background-color: rgb(59, 59, 59); color: rgb(49, 213, 246);">
-            <td class="no-hover" rowspan="5" style="width: 20%;"><img class="pfp-table" src="pfp.jpeg" alt="Profile Picture"></td>
-            <td id="tabel-kanan" style="width: 25%;">Nama</td>
-            <td class="clickable" style="width: 55%;" data-title="Nama" data-info="Hai, Nama saya Winner Hana Saverio!, kamu bisa memanggilku Winner!, Salken ya">Winner Hana Saverio</td>
-        </tr>
-        <tr style="background-color: rgb(59, 59, 59); color: rgb(49, 213, 246);">
-            <td class="tabel-kanan">Tanggal lahir</td>
-            <td class="clickable" data-title="Tanggal Lahir" data-info="Saya Lahir pada 1 November 2009, di bulan yang identik dengan awal musim hujan.">1 November 2009</td>
-        </tr>
-        <tr style="background-color: rgb(59, 59, 59); color: rgb(49, 213, 246);">
-            <td class="tabel-kanan">Kelas/jurusan</td>
-            <td class="clickable" data-title="Kelas / Jurusan" data-info="Saat ini menempuh pendidikan di kelas X PPLG 1, jurusan Pengembangan Perangkat Lunak dan Gim.">X PPLG 1</td>
-        </tr>
-        <tr style="background-color: rgb(59, 59, 59); color: rgb(49, 213, 246);">
-            <td class="tabel-kanan">Jenis kelamin</td>
-            <td class="clickable" data-title="Jenis Kelamin" data-info="Lelaki Tamfan.">Laki Laki</td>
-        </tr>
-        <tr style="background-color: rgb(59, 59, 59); color: rgb(49, 213, 246);">
-            <td class="tabel-kanan">Alamat</td>
-            <td class="clickable" data-title="Alamat" data-info="Bertempat tinggal di Perumahan Bumi Prayudan, daerah Mertoyudan, Magelang.">Mertoyudan</td>
-        </tr>
-    </table>
-</div>
-
-<!-- POPUP MODAL -->
-<div id="popupOverlay" class="popup-overlay">
-    <div class="popup-box">
-        <span id="popupClose" class="popup-close">&times;</span>
-        <h3 id="popupTitle"></h3>
-        <p id="popupText"></p>
+        <div class="section" style="padding-top:0;">
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-ico">&#128100;</div>
+                    <h3>Kenalan Yuk</h3>
+                    <p>Lihat identitas singkat dan cerita tentang diriku.</p>
+                    <a class="badge" href="biodata.html" style="text-decoration:none;">Buka Identitas &#8594;</a>
+                </div>
+                <div class="card">
+                    <div class="card-ico">&#128200;</div>
+                    <h3>Kemampuan</h3>
+                    <p>Progress HTML, CSS, PHP, JavaScript, Blender, dan Stick Nodes.</p>
+                    <a class="badge" href="kemampuan.html" style="text-decoration:none;">Lihat Progress &#8594;</a>
+                </div>
+                <div class="card">
+                    <div class="card-ico">&#128736;</div>
+                    <h3>Project</h3>
+                    <p>Koleksi project yang sedang dikerjakan.</p>
+                    <a class="badge" href="project.html" style="text-decoration:none;">Buka Project &#8594;</a>
+                </div>
+                <div class="card">
+                    <div class="card-ico">&#127891;</div>
+                    <h3>Sertifikat</h3>
+                    <p>Kumpulan sertifikat dan pencapaian.</p>
+                    <a class="badge" href="sertifikat.html" style="text-decoration:none;">Buka Sertifikat &#8594;</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<script>
-    const clickableCells = document.querySelectorAll('.clickable');
-    const overlay = document.getElementById('popupOverlay');
-    const popupTitle = document.getElementById('popupTitle');
-    const popupText = document.getElementById('popupText');
-    const closeBtn = document.getElementById('popupClose');
-
-    clickableCells.forEach(cell => {
-        cell.addEventListener('click', () => {
-            popupTitle.textContent = cell.getAttribute('data-title');
-            popupText.textContent = cell.getAttribute('data-info');
-            overlay.classList.add('active');
-        });
-    });
-
-    function closePopup() {
-        overlay.classList.remove('active');
-    }
-
-    closeBtn.addEventListener('click', closePopup);
-
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) {
-            closePopup();
-        }
-    });
-</script>
-
 <footer class="footer">
     <br />
-    © 2026 <strong>BIODATA</strong> · 
-    Dibuat oleh Winner Hana · 
+    &copy; 2026 <strong>HALAMAN UTAMA</strong> &middot;
+    Dibuat oleh Winner Hana &middot;
     <a href="#">Kembali ke Atas</a>
-    <br /><br />
+    <br />
+    <br />
 </footer>
+
+<script>
+    const toggle = document.getElementById('menuToggle');
+    const sidebar = document.querySelector('nav');
+    const backdrop = document.getElementById('backdrop');
+    toggle.addEventListener('click', () => {
+        const open = sidebar.classList.toggle('open');
+        backdrop.classList.toggle('show', open);
+    });
+    backdrop.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('show');
+    });
+
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect();
+            card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+            card.style.setProperty('--my', `${e.clientY - r.top}px`);
+        });
+    });
+</script>
 
 </body>
 </html>

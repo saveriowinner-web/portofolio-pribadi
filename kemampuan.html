@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kemampuan - Winner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button id="menuToggle" aria-label="Buka menu">&#9776;</button>
+<div id="backdrop" class="nav-backdrop"></div>
+
+<nav>
+    <div class="profile">
+        <img src="miwapfp.jpg" alt="miwapfp" class="profile-pic">
+        <div class="profile-name">Winner Hana<br><small>PPLG 1</small></div>
+    </div>
+    <div class="nav-links">
+        <a href="index.html"><span class="ico">&#127968;</span> Beranda</a>
+        <a href="biodata.html"><span class="ico">&#128100;</span> Identitas</a>
+        <a href="kemampuan.html" class="active"><span class="ico">&#128200;</span> Kemampuan</a>
+        <a href="project.html"><span class="ico">&#128736;</span> Project</a>
+        <a href="sertifikat.html"><span class="ico">&#127891;</span> Sertifikat</a>
+    </div>
+</nav>
+
+<div class="content">
+    <section class="section">
+        <div class="header-title" style="text-align:left;">
+            <h1>KEMAMPUAN SAYA</h1>
+            <p>Perjalananku mempelajari bahasa pemrograman &amp; animasi</p>
+        </div>
+
+        <!-- Profile kemampuan -->
+        <div class="card" style="margin-bottom:24px;">
+            <p style="color:var(--muted); font-size:0.95rem; line-height:1.7;">
+                Saya bisa bahasa pemrograman <strong style="color:var(--cyan);">CSS, HTML, PHP,</strong> dan
+                sedikit <strong style="color:var(--cyan);">JavaScript</strong> — bisa dibilang masih
+                <span class="badge">Beginner</span>. Di samping coding, saya juga bisa menggunakan
+                <strong style="color:var(--cyan);">Blender</strong> untuk modeling dan membuat
+                <strong style="color:var(--cyan);">animasi 2 dimensi</strong> menggunakan engine
+                <strong style="color:var(--cyan);">Stick Nodes</strong>.
+            </p>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="card skill-card">
+            <h3 style="margin-top:0;">PROGRESS KEMAMPUAN</h3>
+            <div class="skill-list">
+
+                <div class="skill-row">
+                    <span class="skill-name">HTML</span>
+                    <div class="skill-track"><div class="skill-fill" style="--w:73%;"></div></div>
+                    <span class="skill-pct">73%</span>
+                </div>
+
+                <div class="skill-row">
+                    <span class="skill-name">CSS</span>
+                    <div class="skill-track"><div class="skill-fill" style="--w:68%;"></div></div>
+                    <span class="skill-pct">68%</span>
+                </div>
+
+                <div class="skill-row">
+                    <span class="skill-name">PHP</span>
+                    <div class="skill-track"><div class="skill-fill" style="--w:25%;"></div></div>
+                    <span class="skill-pct">25%</span>
+                </div>
+
+                <div class="skill-row">
+                    <span class="skill-name">JavaScript</span>
+                    <div class="skill-track"><div class="skill-fill" style="--w:12%;"></div></div>
+                    <span class="skill-pct">12%</span>
+                </div>
+
+                <div class="skill-row">
+                    <span class="skill-name">Blender</span>
+                    <div class="skill-track"><div class="skill-fill" style="--w:23%;"></div></div>
+                    <span class="skill-pct">23%</span>
+                </div>
+
+                <div class="skill-row">
+                    <span class="skill-name">Stick Nodes</span>
+                    <div class="skill-track"><div class="skill-fill" style="--w:89%;"></div></div>
+                    <span class="skill-pct">89%</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Diagram batang -->
+        <div class="card" style="margin-top:24px;">
+            <h3 style="margin-top:0;">DIAGRAM BATANG</h3>
+            <div class="chart">
+                <div class="bar-wrap">
+                    <span class="bar-value">73%</span>
+                    <div class="bar" style="height:73%;"></div>
+                    <span class="bar-label">HTML</span>
+                </div>
+                <div class="bar-wrap">
+                    <span class="bar-value">68%</span>
+                    <div class="bar" style="height:68%;"></div>
+                    <span class="bar-label">CSS</span>
+                </div>
+                <div class="bar-wrap">
+                    <span class="bar-value">25%</span>
+                    <div class="bar" style="height:25%;"></div>
+                    <span class="bar-label">PHP</span>
+                </div>
+                <div class="bar-wrap">
+                    <span class="bar-value">12%</span>
+                    <div class="bar" style="height:12%;"></div>
+                    <span class="bar-label">JavaScript</span>
+                </div>
+                <div class="bar-wrap">
+                    <span class="bar-value">23%</span>
+                    <div class="bar" style="height:23%;"></div>
+                    <span class="bar-label">Blender</span>
+                </div>
+                <div class="bar-wrap">
+                    <span class="bar-value">89%</span>
+                    <div class="bar" style="height:89%;"></div>
+                    <span class="bar-label">Stick Nodes</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<footer class="footer">
+    <br />
+    &copy; 2026 <strong>KEMAMPUAN</strong> &middot;
+    Dibuat oleh Winner Hana &middot;
+    <a href="#">Kembali ke Atas</a>
+    <br /><br />
+</footer>
+
+<script>
+    // Hamburger / sidebar mobile
+    const toggle = document.getElementById('menuToggle');
+    const sidebar = document.querySelector('nav');
+    const backdrop = document.getElementById('backdrop');
+    toggle.addEventListener('click', () => {
+        const open = sidebar.classList.toggle('open');
+        backdrop.classList.toggle('show', open);
+    });
+    backdrop.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('show');
+    });
+
+    // Animate skill-fill to width = --w
+    document.querySelectorAll('.skill-fill').forEach(el => {
+        const target = el.style.getPropertyValue('--w');
+        el.style.setProperty('--fillw', target);
+        el.style.width = target;
+    });
+</script>
+
+</body>
+</html>

@@ -1,47 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form - Winner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            300: '#8ff0ff',
+                            400: '#4fd3ff',
+                            500: '#31d5f6'
+                        },
+                        ink: { 800: '#0b1220', 700: '#132338', 600: '#1c2c44' }
+                    }
+                }
+            }
+        };
+    </script>
 </head>
 <body>
-    <link rel="stylesheet" href="style.css">
-        <nav class="navbar">
-    <a href="index.html" class="logo"> Tugas</a>
-    <div class="nav-links">
-        <a href="index.html" class="active">Beranda</a>
-        <a href="biodata.html">Identitas</a>
-        <a href="form.html">Form</a>
-        <a href="table.html">Tabel</a>
-        <a href="boxcss.html">Box CSS</a>
+
+<button id="menuToggle" aria-label="Buka menu">&#9776;</button>
+<div id="backdrop" class="nav-backdrop"></div>
+
+<nav>
+    <div class="profile">
+        <img src="miwapfp.jpg" alt="miwapfp" class="profile-pic">
+        <div class="profile-name">Winner Hana<br><small>PPLG 1</small></div>
     </div>
-    </nav>
-    <form class="form">
-        nama <input type="text" name="nama">
-        <br>
-        tgl <input type="date" name="tgl">
-        <br>
-        jk <input type="radio" name="jk" value="laki laki"> laki laki <input type="radio" name="jk" value="perempuan"> perempuan
-        <br>
-        kelas <input type="radio" name="kelas" value="x">X <input type="radio" name="kelas" value="XI">XI <input type="radio" name="kelas" value="XII"> XII
-         <label for="jurusan">jurusan</label>
-         <br>
-    <select id="jurusan" name="jurusan" required>
-         <option value="" disabled selected>pilih jurusan bung</option>
-          <option value="PPLG">PPLG</option>
-        <option value="AKL">AKL</option>
-        <option value="PM">PM</option>
-        <option value="MPLB">MPLB</option>
-            <input style="right: auto;" type="submit">
-    <input type="reset">
-    </select>
-    </form>
+    <div class="nav-links">
+        <a href="index.html"><span class="ico">&#127968;</span> Beranda</a>
+        <a href="biodata.html"><span class="ico">&#128100;</span> Identitas</a>
+        <a href="kemampuan.html"><span class="ico">&#128200;</span> Kemampuan</a>
+        <a href="project.html"><span class="ico">&#128736;</span> Project</a>
+        <a href="sertifikat.html"><span class="ico">&#127891;</span> Sertifikat</a>
+    </div>
+</nav>
+
+<div class="content">
+    <section class="section">
+        <div class="header-title" style="text-align:left;">
+            <h1>FORM PENDAFTARAN</h1>
+            <p>Diracik dengan <strong class="text-brand-400">React</strong> &amp; <strong class="text-brand-400">Tailwind CSS</strong> &#9889;</p>
+        </div>
+
+        <div id="root" class="w-full max-w-5xl mx-auto"></div>
+    </section>
+</div>
+
+<footer class="footer">
+    <br />
+    &copy; 2026 <strong>FORM</strong> &middot;
+    Dibuat oleh Winner Hana &middot;
+    <a href="#">Kembali ke Atas</a>
+    <br /><br />
+</footer>
+
+<!-- React + Babel (CDN) -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+function FormPendaftaran() {
+    const [nama, setNama] = useState('');
+    const [tgl, setTgl] = useState('');
+    const [jk, setJk] = useState('');
+    const [kelas, setKelas] = useState('');
+    const [jurusan, setJurusan] = useState('');
+    const [dikirim, setDikirim] = useState(null);
+
+    const reset = () => {
+        setNama(''); setTgl(''); setJk(''); setKelas('');
+        setJurusan(''); setDikirim(null);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setDikirim({ nama, tgl, jk, kelas, jurusan });
+    };
+
+    const inputCls = "w-full rounded-xl border border-brand-500/30 bg-white/5 px-4 py-2.5 text-slate-100 placeholder-slate-400 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-400/30";
+    const labelCls = "mb-1.5 block text-sm font-semibold text-slate-300";
+
+    return (
+        <div className="grid gap-6 md:grid-cols-2">
+            {/* FORM */}
+            <form onSubmit={handleSubmit} className="rounded-2xl border border-brand-500/30 bg-white/5 p-6 shadow-lg backdrop-blur-md">
+                <h3 className="mb-5 text-xl font-bold text-white">Isi Data Diri</h3>
+
+                <label className={labelCls}>Nama Lengkap</label>
+                <input type="text" name="nama" value={nama} onChange={e => setNama(e.target.value)}
+                    placeholder="Tulis namamu..." className={inputCls} />
+
+                <label className={labelCls + " mt-4"}>Tanggal Lahir</label>
+                <input type="date" name="tgl" value={tgl} onChange={e => setTgl(e.target.value)} className={inputCls} />
+
+                <label className={labelCls + " mt-4"}>Jenis Kelamin</label>
+                <div className="flex flex-wrap gap-4">
+                    {["Laki-laki", "Perempuan"].map(o => (
+                        <label key={o} className="flex cursor-pointer items-center gap-2 text-sm text-slate-200">
+                            <input type="radio" name="jk" value={o} checked={jk === o}
+                                onChange={e => setJk(e.target.value)}
+                                className="h-4 w-4 accent-brand-500" />
+                            {o}
+                        </label>
+                    ))}
+                </div>
+
+                <label className={labelCls + " mt-4"}>Kelas</label>
+                <div className="flex flex-wrap gap-4">
+                    {["X", "XI", "XII"].map(k => (
+                        <label key={k} className="flex cursor-pointer items-center gap-2 text-sm text-slate-200">
+                            <input type="radio" name="kelas" value={k} checked={kelas === k}
+                                onChange={e => setKelas(e.target.value)}
+                                className="h-4 w-4 accent-brand-500" />
+                            {k}
+                        </label>
+                    ))}
+                </div>
+
+                <label className={labelCls + " mt-4"}>Jurusan</label>
+                <select name="jurusan" value={jurusan} onChange={e => setJurusan(e.target.value)} required className={inputCls}>
+                    <option value="" disabled>Pilih jurusan bung</option>
+                    <option value="PPLG">PPLG</option>
+                    <option value="AKL">AKL</option>
+                    <option value="PM">PM</option>
+                    <option value="MPLB">MPLB</option>
+                </select>
+
+                <div className="mt-6 flex gap-3">
+                    <button type="submit"
+                        className="flex-1 rounded-xl bg-gradient-to-r from-brand-500 to-brand-400 px-5 py-2.5 font-bold text-slate-950 shadow-lg shadow-brand-500/30 transition hover:opacity-90 active:scale-95">
+                        Kirim
+                    </button>
+                    <button type="button" onClick={reset}
+                        className="rounded-xl border border-slate-500/40 px-5 py-2.5 font-semibold text-slate-200 transition hover:bg-white/10 active:scale-95">
+                        Reset
+                    </button>
+                </div>
+            </form>
+
+            {/* LIVE PREVIEW */}
+            <div className="rounded-2xl border border-brand-500/30 bg-ink-700/60 p-6 shadow-lg backdrop-blur-md">
+                <h3 className="mb-5 text-xl font-bold text-white">Pratinjau Langsung <span className="text-base font-medium text-brand-400">(React live state)</span></h3>
+
+                <dl className="space-y-3 text-sm">
+                    <Row label="Nama" value={nama || "—"} />
+                    <Row label="Tanggal Lahir" value={tgl || "—"} />
+                    <Row label="Jenis Kelamin" value={jk || "—"} />
+                    <Row label="Kelas" value={kelas || "—"} />
+                    <Row label="Jurusan" value={jurusan || "—"} />
+                </dl>
+
+                {dikirim ? (
+                    <div className="mt-5 rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-300">
+                        &#10004; Berhasil dikirim! Terima kasih, <b>{dikirim.nama}</b> dari kelas {dikirim.kelas} ({dikirim.jurusan}).
+                    </div>
+                ) : (
+                    <div className="mt-5 rounded-xl border border-slate-500/30 bg-white/5 px-4 py-3 text-sm text-slate-400">
+                        Klik <b className="text-brand-400">Kirim</b> untuk melihat hasil submit.
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
+function Row({ label, value }) {
+    return (
+        <div className="flex items-center justify-between border-b border-white/10 pb-2">
+            <dt className="font-medium text-slate-400">{label}</dt>
+            <dd className="font-semibold text-brand-300">{value}</dd>
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<FormPendaftaran />);
+</script>
+
+<script>
+    const toggle = document.getElementById('menuToggle');
+    const sidebar = document.querySelector('nav');
+    const backdrop = document.getElementById('backdrop');
+    toggle.addEventListener('click', () => {
+        const open = sidebar.classList.toggle('open');
+        backdrop.classList.toggle('show', open);
+    });
+    backdrop.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('show');
+    });
+</script>
 
 </body>
-<footer class="footer">
-    © 2026 <strong>Tugas HTML & CSS</strong> · 
-    Dibuat oleh Winner Hana · 
-    <a href="#">Kembali ke Atas</a>
-</footer>
 </html>
