@@ -509,6 +509,256 @@ nav .profile {
 .popup-close:hover { color: var(--cyan); transform: rotate(90deg); }
 
 /* ============================================================
+   FORM PENDAFTARAN (form.html)
+   ============================================================ */
+.form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* Panel form & preview berbagi "rasa" kartu */
+.contact-form,
+.live-preview {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 26px 24px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    min-width: 0;
+}
+
+.contact-form {
+    flex: 1.45;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.live-preview {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 24px;
+    background: linear-gradient(160deg, #1c2c44, #122033);
+}
+
+.form-title {
+    margin: 0 0 2px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.preview-sub {
+    margin: 4px 0 18px;
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+/* ---------- Field (flex vertical rapi) ---------- */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.form-field > label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--muted);
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+.form-row > .form-field { flex: 1 1 0; min-width: 160px; }
+
+/* Input dasar */
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="date"],
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(79, 211, 255, 0.25);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: var(--text);
+    font: inherit;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.form-field textarea { resize: vertical; min-height: 84px; }
+
+.form-field input::placeholder,
+.form-field textarea::placeholder { color: var(--muted); opacity: 0.8; }
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: var(--cyan);
+    background: rgba(79, 211, 255, 0.06);
+    box-shadow: 0 0 0 4px rgba(79, 211, 255, 0.15);
+}
+
+.form-field select option { background: var(--dark); color: var(--text); }
+
+/* Kelompok pilihan (radio) berbentuk pil */
+.field-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+    user-select: none;
+}
+
+.pill:hover { border-color: var(--cyan); color: var(--text); transform: translateY(-1px); }
+
+.pill input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.pill:has(input:checked) {
+    background: linear-gradient(135deg, var(--cyan-soft), #2aa8e0);
+    border-color: transparent;
+    color: #04121f;
+    box-shadow: 0 4px 14px var(--cyan-glow);
+}
+
+/* Tombol aksi */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 12px;
+    padding: 13px 20px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.25s ease, background-color 0.25s ease, opacity 0.25s ease;
+}
+
+.btn:active { transform: scale(0.96); }
+
+.btn-primary {
+    flex: 1;
+    background: linear-gradient(135deg, var(--cyan-soft), #2aa8e0);
+    color: #04121f;
+    box-shadow: 0 6px 18px var(--cyan-glow);
+}
+.btn-primary:hover { opacity: 0.9; box-shadow: 0 10px 26px var(--cyan-glow); }
+
+.btn-ghost {
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+}
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* ---------- Panel pratinjau ---------- */
+.preview-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+}
+
+.preview-list div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+    padding: 11px 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.preview-list div:last-child { border-bottom: none; }
+
+.preview-list dt {
+    color: var(--muted);
+    font-size: 0.86rem;
+    font-weight: 600;
+    flex: none;
+}
+
+.preview-list dd {
+    margin: 0;
+    color: var(--cyan);
+    font-weight: 800;
+    font-size: 0.92rem;
+    text-align: right;
+    word-break: break-word;
+    min-width: 0;
+}
+
+.preview-list dd.dd-pesan {
+    font-weight: 600;
+    color: var(--text-soft, #dbe9f7);
+}
+
+.live-preview .info-box,
+.live-preview .success-box {
+    margin-top: 18px;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    line-height: 1.55;
+}
+
+.info-box {
+    border: 1px solid rgba(255, 209, 102, 0.35);
+    background: rgba(255, 209, 102, 0.08);
+    color: var(--warn);
+}
+
+.success-box {
+    border: 1px solid rgba(107, 255, 168, 0.4);
+    background: rgba(107, 255, 168, 0.1);
+    color: var(--success);
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .footer {
@@ -529,6 +779,8 @@ nav .profile {
 @media (max-width: 900px) {
     #tabel-identitas td { font-size: 0.9rem; padding: 12px 10px; }
     .skill-row { grid-template-columns: 110px 1fr 54px; }
+    .form-grid { flex-direction: column; gap: 20px; }
+    .live-preview { position: static; }
 }
 
 @media (max-width: 768px) {
@@ -553,6 +805,10 @@ nav .profile {
     .chart { height: 220px; }
 
     .table { min-height: 0; justify-content: center; }
+
+    /* Form: susun menumpuk di layar kecil */
+    .form-grid { flex-direction: column; gap: 20px; }
+    .live-preview { position: static; }
 }
 
 @media (max-width: 560px) {
@@ -570,6 +826,12 @@ nav .profile {
     .chart { height: 190px; }
     .chart .bar-label { font-size: 0.62rem; }
     .popup-box { padding: 24px 20px; }
+
+    .form-row { flex-direction: column; gap: 16px; }
+    .form-row > .form-field { min-width: 0; }
+    .contact-form, .live-preview { padding: 20px 16px; }
+    .form-actions { flex-direction: column; }
+    .btn-primary { flex: none; width: 100%; }
 }
 
 @media (max-width: 380px) {

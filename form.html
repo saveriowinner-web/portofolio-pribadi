@@ -5,23 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form - Winner</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            300: '#8ff0ff',
-                            400: '#4fd3ff',
-                            500: '#31d5f6'
-                        },
-                        ink: { 800: '#0b1220', 700: '#132338', 600: '#1c2c44' }
-                    }
-                }
-            }
-        };
-    </script>
 </head>
 <body>
 
@@ -39,6 +22,7 @@
         <a href="kemampuan.html"><span class="ico">&#128200;</span> Kemampuan</a>
         <a href="project.html"><span class="ico">&#128736;</span> Project</a>
         <a href="sertifikat.html"><span class="ico">&#127891;</span> Sertifikat</a>
+        <a href="form.html" class="active"><span class="ico">&#128231;</span> Form</a>
     </div>
 </nav>
 
@@ -46,10 +30,118 @@
     <section class="section">
         <div class="header-title" style="text-align:left;">
             <h1>FORM PENDAFTARAN</h1>
-            <p>Diracik dengan <strong class="text-brand-400">React</strong> &amp; <strong class="text-brand-400">Tailwind CSS</strong> &#9889;</p>
+            <p>Isi data di bawah ini, hasilnya langsung <strong style="color:var(--cyan-soft);">terkirim ke email saya</strong> &#128231;</p>
         </div>
 
-        <div id="root" class="w-full max-w-5xl mx-auto"></div>
+        <div class="form-grid">
+
+            <!-- ==================== FORM ==================== -->
+            <form id="contactForm"
+                  action="https://formsubmit.co/saveriowinner@gmail.com"
+                  method="POST"
+                  class="contact-form">
+
+                <!-- konfigurasi FormSubmit -->
+                <input type="hidden" name="_subject" value="Pendaftaran Baru dari Website!">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="form.html?terkirim=1">
+
+                <h3 class="form-title">&#128221; Isi Data Diri</h3>
+
+                <div class="form-field">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" name="Nama" id="nama" placeholder="Tulis namamu..." required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="email">Email Kamu</label>
+                        <input type="email" name="Email" id="email" placeholder="nama@email.com" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="tgl">Tanggal Lahir</label>
+                        <input type="date" name="Tanggal Lahir" id="tgl">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label>Jenis Kelamin</label>
+                    <div class="field-group">
+                        <label class="pill">
+                            <input type="radio" name="Jenis Kelamin" value="Laki-laki" checked>
+                            &#128104; Laki-laki
+                        </label>
+                        <label class="pill">
+                            <input type="radio" name="Jenis Kelamin" value="Perempuan">
+                            &#128105; Perempuan
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Kelas</label>
+                        <div class="field-group">
+                            <label class="pill">
+                                <input type="radio" name="Kelas" value="X"> X
+                            </label>
+                            <label class="pill">
+                                <input type="radio" name="Kelas" value="XI" checked> XI
+                            </label>
+                            <label class="pill">
+                                <input type="radio" name="Kelas" value="XII"> XII
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="jurusan">Jurusan</label>
+                        <select name="Jurusan" id="jurusan">
+                            <option value="PPLG" selected>PPLG</option>
+                            <option value="AKL">AKL</option>
+                            <option value="PM">PM</option>
+                            <option value="MPLB">MPLB</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="pesan">Pesan</label>
+                    <textarea name="Pesan" id="pesan" rows="3" placeholder="Tulis pesan tambahan untukku..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">&#128231; Kirim ke Email</button>
+                    <button type="reset" class="btn btn-ghost">&#8635; Reset</button>
+                </div>
+            </form>
+            <!-- ================ END FORM ================ -->
+
+            <!-- ================ LIVE PREVIEW ================ -->
+            <aside class="live-preview">
+                <h3 class="form-title">&#128161; Pratinjau Langsung</h3>
+                <p class="preview-sub">Isi form di sebelah kiri, ringkasan langsung muncul di sini.</p>
+
+                <dl class="preview-list">
+                    <div><dt>Nama</dt><dd data-preview="Nama">—</dd></div>
+                    <div><dt>Email</dt><dd data-preview="Email">—</dd></div>
+                    <div><dt>Tanggal Lahir</dt><dd data-preview="Tanggal Lahir">—</dd></div>
+                    <div><dt>Jenis Kelamin</dt><dd data-preview="Jenis Kelamin">—</dd></div>
+                    <div><dt>Kelas</dt><dd data-preview="Kelas">—</dd></div>
+                    <div><dt>Jurusan</dt><dd data-preview="Jurusan">—</dd></div>
+                    <div><dt>Pesan</dt><dd data-preview="Pesan" class="dd-pesan">—</dd></div>
+                </dl>
+
+                <div id="successBox" class="success-box" hidden>
+                    &#10004; Terima kasih! Data berhasil terkirim ke email Winner.
+                </div>
+                <div id="infoBox" class="info-box">
+                    Klik <b>Kirim ke Email</b> setelah semua data lengkap.
+                </div>
+            </aside>
+            <!-- ============== END LIVE PREVIEW ============== -->
+
+        </div>
     </section>
 </div>
 
@@ -61,132 +153,8 @@
     <br /><br />
 </footer>
 
-<!-- React + Babel (CDN) -->
-<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-<script type="text/babel">
-const { useState } = React;
-
-function FormPendaftaran() {
-    const [nama, setNama] = useState('');
-    const [tgl, setTgl] = useState('');
-    const [jk, setJk] = useState('');
-    const [kelas, setKelas] = useState('');
-    const [jurusan, setJurusan] = useState('');
-    const [dikirim, setDikirim] = useState(null);
-
-    const reset = () => {
-        setNama(''); setTgl(''); setJk(''); setKelas('');
-        setJurusan(''); setDikirim(null);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setDikirim({ nama, tgl, jk, kelas, jurusan });
-    };
-
-    const inputCls = "w-full rounded-xl border border-brand-500/30 bg-white/5 px-4 py-2.5 text-slate-100 placeholder-slate-400 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-400/30";
-    const labelCls = "mb-1.5 block text-sm font-semibold text-slate-300";
-
-    return (
-        <div className="grid gap-6 md:grid-cols-2">
-            {/* FORM */}
-            <form onSubmit={handleSubmit} className="rounded-2xl border border-brand-500/30 bg-white/5 p-6 shadow-lg backdrop-blur-md">
-                <h3 className="mb-5 text-xl font-bold text-white">Isi Data Diri</h3>
-
-                <label className={labelCls}>Nama Lengkap</label>
-                <input type="text" name="nama" value={nama} onChange={e => setNama(e.target.value)}
-                    placeholder="Tulis namamu..." className={inputCls} />
-
-                <label className={labelCls + " mt-4"}>Tanggal Lahir</label>
-                <input type="date" name="tgl" value={tgl} onChange={e => setTgl(e.target.value)} className={inputCls} />
-
-                <label className={labelCls + " mt-4"}>Jenis Kelamin</label>
-                <div className="flex flex-wrap gap-4">
-                    {["Laki-laki", "Perempuan"].map(o => (
-                        <label key={o} className="flex cursor-pointer items-center gap-2 text-sm text-slate-200">
-                            <input type="radio" name="jk" value={o} checked={jk === o}
-                                onChange={e => setJk(e.target.value)}
-                                className="h-4 w-4 accent-brand-500" />
-                            {o}
-                        </label>
-                    ))}
-                </div>
-
-                <label className={labelCls + " mt-4"}>Kelas</label>
-                <div className="flex flex-wrap gap-4">
-                    {["X", "XI", "XII"].map(k => (
-                        <label key={k} className="flex cursor-pointer items-center gap-2 text-sm text-slate-200">
-                            <input type="radio" name="kelas" value={k} checked={kelas === k}
-                                onChange={e => setKelas(e.target.value)}
-                                className="h-4 w-4 accent-brand-500" />
-                            {k}
-                        </label>
-                    ))}
-                </div>
-
-                <label className={labelCls + " mt-4"}>Jurusan</label>
-                <select name="jurusan" value={jurusan} onChange={e => setJurusan(e.target.value)} required className={inputCls}>
-                    <option value="" disabled>Pilih jurusan bung</option>
-                    <option value="PPLG">PPLG</option>
-                    <option value="AKL">AKL</option>
-                    <option value="PM">PM</option>
-                    <option value="MPLB">MPLB</option>
-                </select>
-
-                <div className="mt-6 flex gap-3">
-                    <button type="submit"
-                        className="flex-1 rounded-xl bg-gradient-to-r from-brand-500 to-brand-400 px-5 py-2.5 font-bold text-slate-950 shadow-lg shadow-brand-500/30 transition hover:opacity-90 active:scale-95">
-                        Kirim
-                    </button>
-                    <button type="button" onClick={reset}
-                        className="rounded-xl border border-slate-500/40 px-5 py-2.5 font-semibold text-slate-200 transition hover:bg-white/10 active:scale-95">
-                        Reset
-                    </button>
-                </div>
-            </form>
-
-            {/* LIVE PREVIEW */}
-            <div className="rounded-2xl border border-brand-500/30 bg-ink-700/60 p-6 shadow-lg backdrop-blur-md">
-                <h3 className="mb-5 text-xl font-bold text-white">Pratinjau Langsung <span className="text-base font-medium text-brand-400">(React live state)</span></h3>
-
-                <dl className="space-y-3 text-sm">
-                    <Row label="Nama" value={nama || "—"} />
-                    <Row label="Tanggal Lahir" value={tgl || "—"} />
-                    <Row label="Jenis Kelamin" value={jk || "—"} />
-                    <Row label="Kelas" value={kelas || "—"} />
-                    <Row label="Jurusan" value={jurusan || "—"} />
-                </dl>
-
-                {dikirim ? (
-                    <div className="mt-5 rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-300">
-                        &#10004; Berhasil dikirim! Terima kasih, <b>{dikirim.nama}</b> dari kelas {dikirim.kelas} ({dikirim.jurusan}).
-                    </div>
-                ) : (
-                    <div className="mt-5 rounded-xl border border-slate-500/30 bg-white/5 px-4 py-3 text-sm text-slate-400">
-                        Klik <b className="text-brand-400">Kirim</b> untuk melihat hasil submit.
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-}
-
-function Row({ label, value }) {
-    return (
-        <div className="flex items-center justify-between border-b border-white/10 pb-2">
-            <dt className="font-medium text-slate-400">{label}</dt>
-            <dd className="font-semibold text-brand-300">{value}</dd>
-        </div>
-    );
-}
-
-ReactDOM.createRoot(document.getElementById('root')).render(<FormPendaftaran />);
-</script>
-
 <script>
+    // Toggle menu (sidebar) di layar kecil
     const toggle = document.getElementById('menuToggle');
     const sidebar = document.querySelector('nav');
     const backdrop = document.getElementById('backdrop');
@@ -198,6 +166,29 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormPendaftaran />)
         sidebar.classList.remove('open');
         backdrop.classList.remove('show');
     });
+
+    // Live preview: update ringkasan setiap kali input berubah
+    const form = document.getElementById('contactForm');
+    const previewCells = document.querySelectorAll('[data-preview]');
+
+    function updatePreview() {
+        const data = new FormData(form);
+        previewCells.forEach(el => {
+            const value = (data.get(el.dataset.preview) || '').toString().trim();
+            el.textContent = value !== '' ? value : '—';
+        });
+    }
+    form.addEventListener('input', updatePreview);
+    form.addEventListener('change', updatePreview);
+    form.addEventListener('reset', () => setTimeout(updatePreview, 0));
+    updatePreview();
+
+    // Tampilkan pesan sukses jika kembali dari FormSubmit
+    const params = new URLSearchParams(location.search);
+    if (params.get('terkirim')) {
+        document.getElementById('successBox').hidden = false;
+        document.getElementById('infoBox').hidden = true;
+    }
 </script>
 
 </body>
