@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sertifikat - Winner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button id="menuToggle" aria-label="Buka menu">&#9776;</button>
+<div id="backdrop" class="nav-backdrop"></div>
+
+<nav>
+    <div class="profile">
+        <img src="miwapfp.jpg" alt="miwapfp" class="profile-pic">
+        <div class="profile-name">Winner Hana<br><small>PPLG 1</small></div>
+    </div>
+    <div class="nav-links">
+        <a href="index.html"><span class="ico">&#127968;</span> Beranda</a>
+        <a href="biodata.html"><span class="ico">&#128100;</span> Identitas</a>
+        <a href="kemampuan.html"><span class="ico">&#128200;</span> Kemampuan</a>
+        <a href="project.html"><span class="ico">&#128736;</span> Project</a>
+        <a href="sertifikat.html" class="active"><span class="ico">&#127891;</span> Sertifikat</a>
+    </div>
+</nav>
+
+<div class="content">
+    <section class="section">
+        <div class="header-title" style="text-align:left;">
+            <h1>SERTIFIKAT SAYA</h1>
+            <p>Penghargaan &amp; pencapaian yang sudah/kiranya akan kusimpan — masih dikosongkan dulu</p>
+        </div>
+
+        <div class="card-grid">
+
+            <!-- Menu grid / UI placeholder -->
+            <div class="card">
+                <div class="card-ico">&#127891;</div>
+                <h3>Lomba Desain Web</h3>
+                <p>Kategori: Design Web Responsive tingkat sekolah.</p>
+                <span class="badge">&#9888; Belum ada</span>
+            </div>
+
+            <div class="card">
+                <div class="card-ico">&#127942;</div>
+                <h3>Juara Animasi 2D</h3>
+                <p>Kategori: Video animasi Stick Nodes fight-scene.</p>
+                <span class="badge">&#9888; Belum ada</span>
+            </div>
+
+            <div class="card">
+                <div class="card-ico">&#128221;</div>
+                <h3>Sertifikat Kursus</h3>
+                <p>Kategori: Kursus HTML/CSS &amp; PHP dasar (online).</p>
+                <span class="badge">&#9888; Belum ada</span>
+            </div>
+
+            <div class="card">
+                <div class="card-ico">&#127919;</div>
+                <h3>Seminar IT</h3>
+                <p>Kategori: Seminar pengembangan perangkat lunak.</p>
+                <span class="badge">&#9888; Belum ada</span>
+            </div>
+
+            <div class="card">
+                <div class="card-ico">&#127941;</div>
+                <h3>Kejuaraan 3D</h3>
+                <p>Kategori: Lomba modeling 3D menggunakan Blender.</p>
+                <span class="badge">&#9888; Belum ada</span>
+            </div>
+
+            <div class="card">
+                <div class="card-ico">&#128281;</div>
+                <h3>Lainnya</h3>
+                <p>Slot kosong untuk sertifikat mendatang.</p>
+                <span class="badge">&#9888; Belum ada</span>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <br />
+    &copy; 2026 <strong>SERTIFIKAT</strong> &middot;
+    Dibuat oleh Winner Hana &middot;
+    <a href="#">Kembali ke Atas</a>
+    <br /><br />
+</footer>
+
+<script>
+    const toggle = document.getElementById('menuToggle');
+    const sidebar = document.querySelector('nav');
+    const backdrop = document.getElementById('backdrop');
+    toggle.addEventListener('click', () => {
+        const open = sidebar.classList.toggle('open');
+        backdrop.classList.toggle('show', open);
+    });
+    backdrop.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('show');
+    });
+
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect();
+            card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+            card.style.setProperty('--my', `${e.clientY - r.top}px`);
+        });
+    });
+</script>
+
+</body>
+</html>
